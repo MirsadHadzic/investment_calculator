@@ -12,7 +12,8 @@ import { InvestmentInput } from '../investment-input.model';
 })
 export class UserInputComponent {
 
-  @Output() calculate = new EventEmitter<InvestmentInput>();
+  // @Output() calculate = new EventEmitter<InvestmentInput>();
+  calculate = output<InvestmentInput>();
   enteredInitialInvestment = signal('0');
   enteredAnnualInvestment = signal('0');
   enteredExpectedReturn = signal('5');
@@ -30,5 +31,9 @@ export class UserInputComponent {
       expectedReturn: + this.enteredExpectedReturn(),
       annualInvestment: + this.enteredAnnualInvestment()
     });
+    this.enteredInitialInvestment.set('0');
+    this.enteredAnnualInvestment.set('0');
+    this.enteredExpectedReturn.set('5');
+    this.enteredDuration.set('10');
   }
 }
